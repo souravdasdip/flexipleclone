@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import NavBar from "./(home)/_components/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,31 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-black relative antialiased text-white bg-custom-gradient`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-black relative antialiased text-white  bg-gradient-to-b from-purple-900 via-black to-balck-900 max-w-[1600px] mx-auto`}
       >
-        <nav className="px-8 py-8 flex items-center justify-between gap-8 font-bold">
-          <Image
-              src="/logo.svg"
-              alt="flexiple"
-              width={120}
-              height={38}
-              priority
-              className="text-white"
-            />
-
-            <ol className="flex items-center flex-1 justify-start gap-8">
-              <li>For Companies</li>
-              <li>For Talent</li>
-              <li>Our Products</li>
-            </ol>
-
-            <div className="flex items-center gap-4">
-              <Button>Find Jobs</Button>
-              <Button>Hire Developers</Button>
-              <Button>Login</Button>
-            </div>
-        </nav>
-
+        <NavBar />
         {children}
       </body>
     </html>

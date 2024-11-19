@@ -1,15 +1,21 @@
 import Banner from "./_components/banner";
-import Jobs from "./_components/jobs";
+import Persons from "./_components/persons";
+import Rightbar from "./_components/rightbar";
 
 export default function Home() {
   return (
     <div className="">
       <main className="grid place-items-center">
-        <div className=" absolute top-0 left-0 right-0 z-[99999]"/>
-        
         <Banner />
-        <Jobs />
+        <div className="flex flex-wrap justify-between gap-4 px-10">
+          <div className="flex-[.7]">
+            <Persons />
+          </div>
+          <div className="flex-[.3]">
+            <Rightbar />
+          </div>
+        </div>
       </main>
-      </div>
+    </div>
   );
 }

@@ -11,6 +11,7 @@ export default {
   	extend: {
 		backgroundImage: {
 			'custom-gradient': 'linear-gradient(180deg, #2340D5 41.03%, #792DC3 99.08%)',
+			'custom-border-gradient': 'linear-gradient(142.48deg, #2340d5 2.46%, #2340d5 2.47%, #c82e53 52.9%, #7f2fcf 102.3%)',
 			'page-background': 'rgb(17 16 18/1)'
 		},
   		colors: {
