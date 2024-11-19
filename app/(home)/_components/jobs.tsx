@@ -15,8 +15,8 @@ export async function Jobs(){
   }
 
   return (
-    <section className='bg-black w-screen text-white'>
-        <span>Hire</span>
+    <section className='bg-black w-screen text-white p-8'>
+        <span className='font-bold'>Hire</span>
 
         {jobs.map(jobPost => {
           return(
@@ -36,8 +36,8 @@ export async function Jobs(){
                   </span>
                 </div>
 
-                <div>
-                  {jobPost.skills.map(skill => <span key={skill.id}>{skill.title}</span>)}
+                <div className='mt-4'>
+                  {jobPost.skills.map(skill => <span className='font-semibold rounded-md bg-white text-black p-2' key={skill.id}>{skill.title}</span>)}
                 </div>
               </div>
             </>

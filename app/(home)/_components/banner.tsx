@@ -4,7 +4,7 @@ import React from 'react'
 
 const Banner = () => {
   return (
-    <header className='grid place-items-center items-center gap-4 min-h-[450px] w-screen'>
+    <header className='grid place-items-center items-center gap-4 min-h-[450px] w-screen overflow-hidden'>
         <div className='max-w-[70%] text-center grid place-items-center gap-4'>
             <h1 className="text-5xl text-center">Hire .NET Developers: Affordable, Dedicated .NET Experts in 72 hours</h1>
 
