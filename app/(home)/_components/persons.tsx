@@ -10,14 +10,16 @@ export default async function Persons() {
     },
   });
 
-  if (!persons || persons.length === 0) {
+  const countPersons = await prisma.persons.count();
+
+  if (!countPersons || !persons || persons.length === 0) {
     return <div>Loading!</div>;
   }
 
   return (
     <section className="text-white">
-      <span className="font-bold">Hire</span>
-
+      <div className="font-bold">Hire</div>
+      <div className="text-md">{countPersons} engineers are available...</div>
       {persons.map((person) => {
         return (
           <>
