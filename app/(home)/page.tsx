@@ -1,6 +1,7 @@
 import Banner from "./_components/banner";
 import Persons from "./_components/persons";
 import Rightbar from "./_components/rightbar";
+import Testimonial from "./_components/testimonial";
 
 export default function Home() {
   return (
@@ -15,6 +16,8 @@ export default function Home() {
             <Rightbar />
           </div>
         </div>
+
+        <Testimonial />
       </main>
     </div>
   );

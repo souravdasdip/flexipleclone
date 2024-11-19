@@ -15,7 +15,7 @@ export default async function Persons() {
   }
 
   return (
-    <section className="bg-black text-white">
+    <section className="text-white">
       <span className="font-bold">Hire</span>
 
       {persons.map((person) => {
