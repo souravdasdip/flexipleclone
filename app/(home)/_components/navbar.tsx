@@ -4,7 +4,7 @@ import React from "react";
 
 const NavBar = () => {
   return (
-    <nav className="px-8 py-8 flex items-center justify-between gap-8 font-bold">
+    <nav className="px-8 py-8 flex items-center justify-between gap-8 font-bold hover:bg-black transition-colors">
       <Image
         src="/logo.svg"
         alt="flexiple"
