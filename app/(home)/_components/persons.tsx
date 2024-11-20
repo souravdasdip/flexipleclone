@@ -9,7 +9,6 @@ export default async function Persons() {
       skills: true,
     },
   });
-
   const countPersons = await prisma.persons.count();
 
   if (!countPersons || !persons || persons.length === 0) {
@@ -30,7 +29,7 @@ export default async function Persons() {
                   Experience: {person.experienceYear} year
                 </div>
                 <div className="text-[#e6e6e6]">
-                  Notice Periods:
+                  Notice Periods:{" "}
                   {person.noticePeriods.map((np) => (
                     <span key={np.id}>{np.title}</span>
                   ))}
