@@ -15,7 +15,7 @@ const Rightbar = () => {
           with exceptional developers perfectly aligned to your specific needs.
         </p>
 
-        <Button>
+        <Button variant={"secondary"}>
           Book a consultation call <ArrowRight />
         </Button>
       </div>
