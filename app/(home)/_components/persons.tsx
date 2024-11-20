@@ -1,15 +1,22 @@
 import prisma from "@/lib/db";
+import { ITEMS_PER_PAGE } from "@/lib/settings";
 import React from "react";
+import Pagination from "./pagination";
 
-export default async function Persons() {
-  const persons = await prisma.persons.findMany({
-    take: 10,
-    include: {
-      noticePeriods: true,
-      skills: true,
-    },
-  });
-  const countPersons = await prisma.persons.count();
+export default async function Persons({ page }: { page: string | undefined }) {
+  const p = page ? parseInt(page) : 1;
+
+  const [persons, countPersons] = await prisma.$transaction([
+    prisma.persons.findMany({
+      include: {
+        noticePeriods: true,
+        skills: true,
+      },
+      take: ITEMS_PER_PAGE,
+      skip: ITEMS_PER_PAGE * (p - 1),
+    }),
+    prisma.persons.count(),
+  ]);
 
   if (!countPersons || !persons || persons.length === 0) {
     return <div>Loading!</div>;
@@ -21,7 +28,7 @@ export default async function Persons() {
       <div className="text-md">{countPersons} engineers are available...</div>
       {persons.map((person) => {
         return (
-          <>
+          <div key={person.id}>
             <div className="border-spacing-2 rounded-sm mt-2 w-full p-8 border-2 border-[#838383] bg-[#0C0B0F]">
               <div className="text-4xl mb-4">{person.name}</div>
               <div className="flex items-center flex-wrap justify-between">
@@ -57,9 +64,12 @@ export default async function Persons() {
                 ))}
               </div>
             </div>
-          </>
+          </div>
         );
       })}
+
+      {/* PAGINATION */}
+      <Pagination page={p} count={countPersons} />
     </section>
   );
 }
