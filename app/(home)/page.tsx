@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Banner from "./_components/banner";
 import Persons from "./_components/persons";
 import Rightbar from "./_components/rightbar";
@@ -17,7 +18,9 @@ export default async function Home({
         <Banner />
         <div className="flex flex-wrap justify-between gap-4 px-10 relative">
           <div className="flex-[.7]">
-            <Persons page={page} />
+            <Suspense fallback="Loading...">
+              <Persons page={page} />
+            </Suspense>
           </div>
           <div className="flex-[.3]">
             <Rightbar />
