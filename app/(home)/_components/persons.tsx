@@ -1,22 +1,17 @@
-import prisma from "@/lib/db";
-import { ITEMS_PER_PAGE } from "@/lib/settings";
 import React from "react";
 import Pagination from "./pagination";
+import { Prisma } from "@prisma/client";
+
+type Person = Prisma.PersonsGetPayload<{
+  include: { noticePeriods: true; skills: true };
+}>;
 
 export default async function Persons({ page }: { page: string | undefined }) {
   const p = page ? parseInt(page) : 1;
 
-  const [persons, countPersons] = await prisma.$transaction([
-    prisma.persons.findMany({
-      include: {
-        noticePeriods: true,
-        skills: true,
-      },
-      take: ITEMS_PER_PAGE,
-      skip: ITEMS_PER_PAGE * (p - 1),
-    }),
-    prisma.persons.count(),
-  ]);
+  const response = await fetch(`http://localhost:3000/api/persons?page=${p}`);
+  const { persons, countPersons }: { persons: Person[]; countPersons: number } =
+    await response.json();
 
   if (!countPersons || !persons || persons.length === 0) {
     return <div>Loading!</div>;
